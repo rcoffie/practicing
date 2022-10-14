@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="text-center"> List Page </h1>
+
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for each in posts %}
+    <tr>
+      <th scope="row">{{foorloop.counter}}</th>
+      <td> <a href="{% url 'post_detail' each.id %}"> {{each.title}} </a> </td>
+      <td>{{each.created_on}}</td>
+      <td>
+      <a class="btn btn-link" href="{% url 'edit_post' each.id  %}"> edit </a>
+      <a class="btn btn-link" href="{% url 'delete_post' each.id  %}"> delete </a>
+      </td>
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
